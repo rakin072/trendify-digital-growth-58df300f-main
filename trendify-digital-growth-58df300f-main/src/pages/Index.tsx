@@ -8,6 +8,7 @@ import 'swiper/css/effect-cards';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const services = [
@@ -190,7 +191,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden dark">
       {/* Enhanced Particle Background */}
       <div className="particles">
         {[...Array(30)].map((_, i) => (
@@ -200,13 +201,14 @@ const Index = () => {
             style={{
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${6 + Math.random() * 4}s`
+              animationDuration: `${6 + Math.random() * 4}s`,
+              transform: `translateZ(${Math.random() * 100}px)`
             }}
           />
         ))}
       </div>
 
-      {/* Hero Section with Background Image */}
+      {/* Hero Section with Enhanced 3D Background */}
       <section id="home" className="relative py-20 min-h-screen flex items-center overflow-hidden">
         <div 
           className="absolute inset-0 z-0"
@@ -214,53 +216,36 @@ const Index = () => {
             backgroundImage: `url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            transform: 'translateZ(-20px)',
+            transformStyle: 'preserve-3d'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/80 via-blue-900/70 to-purple-900/80"></div>
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a120b]/90 via-[#2c1810]/80 to-[#1a120b]/90"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <div 
-              data-aos="fade-up" 
-              data-aos-duration="1000"
-              className="mb-8"
-            >
-              <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
-                Your Digital Success Partner 
-                <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent block mt-2"> Starts Here</span>
+          <div className="text-center" data-aos="fade-up">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 transform-gpu">
+              <span className="bg-gradient-to-r from-[#2c1810] to-[#1a120b] bg-clip-text text-transparent">
+                Digital Growth
+              </span>
+              <br />
+              <span className="text-white">That Drives Results</span>
               </h1>
-            </div>
-            <p 
-              className="text-xl md:text-2xl text-emerald-100 mb-12 leading-relaxed drop-shadow-lg"
-              data-aos="fade-up" 
-              data-aos-delay="200"
-            >
-              We help brands grow through smart digital marketing, video strategies, and custom websites. 
-              Turn your vision into results with our expert team.
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Transform your digital presence with our expert strategies and innovative solutions
             </p>
-            <div 
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-              data-aos="fade-up" 
-              data-aos-delay="400"
-            >
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-600 text-white text-lg px-10 py-6 rounded-full hover-lift pulse-glow shadow-2xl transform transition-all duration-300 hover:scale-105 border-0"
-                onClick={() => scrollToSection('contact')}
-              >
-                Let's Work Together
-                <ArrowRight className="ml-3 h-6 w-6" />
-              </Button>
-              <Button 
-                size="lg" 
-                className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 text-lg px-10 py-6 rounded-full transform transition-all duration-300 hover:scale-105"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="glass-card px-8 py-3 rounded-lg text-white font-semibold hover-lift">
+                Get Started
+              </Link>
+              <button 
+                className="neon-border px-8 py-3 rounded-lg text-white font-semibold hover-lift"
                 onClick={() => scrollToSection('services')}
               >
-                View Our Work
-                <Sparkles className="ml-3 h-6 w-6" />
-              </Button>
+                Learn More
+              </button>
             </div>
           </div>
         </div>
@@ -309,7 +294,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Core Services with Enhanced Design */}
+      {/* Services Section with 3D Cards */}
       <section className="py-24 relative overflow-hidden">
         <div 
           className="absolute inset-0"
@@ -317,10 +302,12 @@ const Index = () => {
             backgroundImage: `url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            transform: 'translateZ(-10px)',
+            transformStyle: 'preserve-3d'
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-emerald-900/70 to-blue-900/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a120b]/90 via-[#2c1810]/80 to-[#1a120b]/90"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-20">
@@ -328,10 +315,10 @@ const Index = () => {
               className="text-4xl md:text-5xl font-bold text-white mb-6"
               data-aos="fade-up"
             >
-              Our Core <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Services</span>
+              Our Core <span className="bg-gradient-to-r from-[#2c1810] to-[#1a120b] bg-clip-text text-transparent">Services</span>
             </h2>
             <p 
-              className="text-xl md:text-2xl text-emerald-100"
+              className="text-xl md:text-2xl text-gray-300"
               data-aos="fade-up" 
               data-aos-delay="200"
             >
@@ -340,38 +327,40 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {services.map((service, index) => (
+            {[
+              {
+                icon: <BarChart3 className="h-16 w-16 text-[#2c1810]" />,
+                title: "Results-Driven Strategies 📈",
+                description: "Data-backed approaches that deliver measurable growth and ROI.",
+                gradient: "from-[#2c1810] to-[#1a120b]"
+              },
+              {
+                icon: <Users className="h-16 w-16 text-[#2c1810]" />,
+                title: "Proven Team of Experts 🧠",
+                description: "Experienced professionals dedicated to your success.",
+                gradient: "from-[#2c1810] to-[#1a120b]"
+              },
+              {
+                icon: <Target className="h-16 w-16 text-[#2c1810]" />,
+                title: "Tailored Solutions 🛠",
+                description: "Custom strategies designed specifically for your brand and goals.",
+                gradient: "from-[#2c1810] to-[#1a120b]"
+              }
+            ].map((item, index) => (
               <div
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={index * 200}
-                className="group"
+                className="text-center group perspective"
               >
-                <Card className="bg-white/10 backdrop-blur-xl text-center p-8 hover-lift border border-white/20 shadow-2xl rounded-3xl overflow-hidden relative">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                  <CardHeader className="relative z-10">
-                    <div className="flex justify-center mb-6">
-                      <div className="floating-icon p-4 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm shadow-lg border border-white/30">
-                        {service.icon}
+                <div className="glass-card p-8 rounded-3xl hover-lift group-hover:shadow-2xl transition-all duration-500 relative overflow-hidden transform-gpu">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}></div>
+                  <div className="floating-icon mx-auto mb-6 p-4 rounded-2xl bg-gradient-to-br from-[#2c1810] to-[#1a120b] shadow-lg w-fit transform-gpu">
+                    {item.icon}
                       </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                  <p className="text-gray-300 text-lg leading-relaxed">{item.description}</p>
                     </div>
-                    <CardTitle className="text-2xl font-bold text-white mb-2">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="relative z-10">
-                    <CardDescription className="text-emerald-100 mb-6 text-lg leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-white rounded-full px-6 py-2 transform transition-all duration-300 hover:scale-105 bg-white/10 backdrop-blur-sm"
-                      onClick={() => scrollToSection('services')}
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
               </div>
             ))}
           </div>
@@ -597,13 +586,17 @@ const Index = () => {
                     ))}
                   </div>
                   <div className="text-center lg:text-left">
+                    <Link 
+                      to="/contact"
+                      className="inline-block"
+                    >
                     <Button 
                       className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full hover-lift pulse-glow transform transition-all duration-300 hover:scale-105 border-0"
-                      onClick={() => scrollToSection('contact')}
                     >
                       Get Started
                       <ArrowRight className="ml-3 h-5 w-5" />
                     </Button>
+                    </Link>
                   </div>
                 </div>
                 <div className="flex-1">
@@ -902,14 +895,15 @@ const Index = () => {
             Let's discuss how we can help you achieve your business goals with our proven strategies.
           </p>
           <div data-aos="fade-up" data-aos-delay="400">
+            <Link to="/contact">
             <Button 
               size="lg" 
               className="bg-white text-emerald-600 hover:bg-gray-100 text-xl px-12 py-6 rounded-full pulse-glow transform transition-all duration-300 hover:scale-105 shadow-2xl"
-              onClick={() => scrollToSection('contact')}
             >
               Get a Free Strategy Call
               <ArrowRight className="ml-3 h-6 w-6" />
             </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,45 +1,30 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from 'next-themes';
+import CursorEffect from './components/CursorEffect';
+import Index from './pages/Index';
+import Contact from './pages/Contact';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import { useEffect } from 'react';
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import Index from "./pages/Index";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-
-const queryClient = new QueryClient();
-
-const App = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out-cubic',
-      once: true,
-      offset: 100,
-    });
-  }, []);
-
+function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1">
-              <Index />
-            </main>
-            <Footer />
-          </div>
-        </TooltipProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <ThemeProvider defaultTheme="dark" forcedTheme="dark">
+      <Router>
+        <div className="min-h-screen bg-[#030303] dark">
+          <CursorEffect />
+          <Navbar />
+          <main className="relative">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/contact" element={<Contact />} />
+              {/* Add other routes here */}
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
-};
+}
 
 export default App;
